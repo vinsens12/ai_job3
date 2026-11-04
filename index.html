@@ -122,16 +122,67 @@
     </form>
   </dialog>
 
-  <dialog class="modal" id="authModal">
-    <form method="dialog" id="authForm">
-      <div class="modal-head"><div><span class="section-kicker">ACCOUNT</span><h2 id="authTitle">เข้าสู่ระบบ</h2></div><button class="icon-button" value="cancel"><i data-lucide="x"></i></button></div>
-      <label class="field"><span>อีเมล</span><input id="authEmail" type="email" required placeholder="name@example.com"></label>
-      <label class="field"><span>รหัสผ่าน</span><input id="authPassword" type="password" required minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร"></label>
-      <button class="primary-button full-width" id="authSubmit" value="submit">เข้าสู่ระบบ</button>
-      <button class="text-button centered" type="button" id="authSwitch">ยังไม่มีบัญชี? สมัครสมาชิก</button>
-      <p class="modal-note" id="authMessage">เมื่อเชื่อม Supabase แล้ว บัญชีจะใช้ซิงก์งานที่บันทึกและประวัติการสมัคร</p>
-    </form>
-  </dialog>
+<dialog class="modal" id="authModal">
+  <form id="authForm">
+    <div class="modal-head">
+      <div>
+        <span class="section-kicker">ACCOUNT</span>
+        <h2 id="authTitle">เข้าสู่ระบบ</h2>
+      </div>
+
+      <button
+        class="icon-button"
+        type="button"
+        id="closeAuth"
+        aria-label="ปิดหน้าต่าง"
+      >
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <label class="field">
+      <span>อีเมล</span>
+      <input
+        id="authEmail"
+        type="email"
+        required
+        placeholder="name@example.com"
+      >
+    </label>
+
+    <label class="field">
+      <span>รหัสผ่าน</span>
+      <input
+        id="authPassword"
+        type="password"
+        required
+        minlength="6"
+        placeholder="อย่างน้อย 6 ตัวอักษร"
+      >
+    </label>
+
+    <button
+      class="primary-button full-width"
+      id="authSubmit"
+      type="submit"
+    >
+      เข้าสู่ระบบ
+    </button>
+
+    <button
+      class="text-button centered"
+      type="button"
+      id="authSwitch"
+    >
+      ยังไม่มีบัญชี? สมัครสมาชิก
+    </button>
+
+    <p class="modal-note" id="authMessage">
+      เมื่อเชื่อม Supabase แล้ว บัญชีจะใช้ซิงก์งานที่บันทึกและประวัติการสมัคร
+    </p>
+  </form>
+</dialog>
+
 
   <dialog class="modal job-modal" id="jobModal"><div id="jobDetail"></div></dialog>
   <div class="toast-region" id="toastRegion" aria-live="polite"></div>
