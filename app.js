@@ -90,7 +90,11 @@
   $("searchForm").addEventListener("submit",e=>{e.preventDefault();runSearch()});$("sortSelect").addEventListener("change",()=>{sortResults();renderJobs(currentResults,$("jobList"))});$("resetSearch").addEventListener("click",resetSearch);$("completeProfile").addEventListener("click",showProfile);
   $("profileForm").addEventListener("submit",e=>{if(e.submitter?.value==="cancel")return;e.preventDefault();profile={name:$("nameInput").value.trim()||"ผู้ใช้งาน",age:$("profileAgeInput").value,skills:$("profileSkillsInput").value};persist();updateProfileUI();$("profileModal").close();$("ageInput").value=profile.age;$("skillsInput").value=profile.skills;toast("บันทึกข้อมูลแล้ว")});
   $("authButton").addEventListener("click",async()=>{if(session){await supabase.auth.signOut();session=null;setAuthUI();toast("ออกจากระบบแล้ว")}else{$("authModal").showModal()}});
-  $("authForm").addEventListener("submit",submitAuth);$("authSwitch").addEventListener("click",()=>{authMode=authMode==="login"?"signup":"login";$("authTitle").textContent=authMode==="login"?"เข้าสู่ระบบ":"สมัครสมาชิก";$("authSubmit").textContent=authMode==="login"?"เข้าสู่ระบบ":"สมัครสมาชิก";$("authSwitch").textContent=authMode==="login"?"ยังไม่มีบัญชี? สมัครสมาชิก":"มีบัญชีแล้ว? เข้าสู่ระบบ"});
+  $("authForm").addEventListener("submit",submitAuth);$("authForm").addEventListener("submit", submitAuth);
+
+$("closeAuth").addEventListener("click", () => {
+  $("authModal").close();
+});$("authSwitch").addEventListener("click",()=>{authMode=authMode==="login"?"signup":"login";$("authTitle").textContent=authMode==="login"?"เข้าสู่ระบบ":"สมัครสมาชิก";$("authSubmit").textContent=authMode==="login"?"เข้าสู่ระบบ":"สมัครสมาชิก";$("authSwitch").textContent=authMode==="login"?"ยังไม่มีบัญชี? สมัครสมาชิก":"มีบัญชีแล้ว? เข้าสู่ระบบ"});
   $("themeToggle").addEventListener("click",()=>{document.body.classList.toggle("dark");localStorage.setItem("wm_dark",document.body.classList.contains("dark"))});
   $("mobileMenu").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
   initProvinces();updateProfileUI();if(localStorage.getItem("wm_dark")==="true")document.body.classList.add("dark");runSearch();renderApplications();icons();initSupabase();
